@@ -4,16 +4,19 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'emtasks',
     environment: environment,
-    rootURL: '/',
+    contentSecurityPolicy: {'connect-src': "'self' wss://*.firebaseio.com"},
+    firebase: {
+      apiKey: "AIzaSyCL52JV_qrm7wbs_6y_urfgEdouTUSiDMA",
+      authDomain: "emtasks-469a3.firebaseapp.com",
+      databaseURL: "https://emtasks-469a3.firebaseio.com",
+      storageBucket: "emtasks-469a3.appspot.com",
+    },
+    baseURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
-      },
-      EXTEND_PROTOTYPES: {
-        // Prevent Ember Data from overriding Date.parse.
-        Date: false
       }
     },
 
@@ -33,6 +36,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
+    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
